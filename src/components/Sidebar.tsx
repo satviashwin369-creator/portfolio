@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import {
   Home,
   User,
@@ -94,8 +95,14 @@ export default function Sidebar() {
       {/* Profile section */}
       <div className="px-4 py-6 border-b border-[var(--color-border)]">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-[var(--color-accent-muted)] border border-[var(--color-accent)] flex items-center justify-center text-[var(--color-accent-hover)] font-bold text-sm">
-            {personalInfo.initials}
+          <div className="w-10 h-10 rounded-lg overflow-hidden border border-[var(--color-accent)] relative flex-shrink-0 bg-[var(--color-accent-muted)]">
+            <Image
+              src={personalInfo.photoPath}
+              alt={personalInfo.name}
+              width={40}
+              height={40}
+              className="w-full h-full object-cover object-top"
+            />
           </div>
           <div>
             <h2 className="font-semibold text-sm text-[var(--color-text-primary)]">
@@ -173,8 +180,14 @@ export default function Sidebar() {
       <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-sidebar)]/95 backdrop-blur-md border-b border-[var(--color-border)]">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[var(--color-accent-muted)] border border-[var(--color-accent)] flex items-center justify-center text-[var(--color-accent-hover)] font-bold text-xs">
-              {personalInfo.initials}
+            <div className="w-8 h-8 rounded-lg overflow-hidden border border-[var(--color-accent)] relative flex-shrink-0 bg-[var(--color-accent-muted)]">
+              <Image
+                src={personalInfo.photoPath}
+                alt={personalInfo.name}
+                width={32}
+                height={32}
+                className="w-full h-full object-cover object-top"
+              />
             </div>
             <span className="font-semibold text-sm">
               {personalInfo.name}

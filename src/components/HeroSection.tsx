@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   MapPin,
   ArrowRight,
@@ -122,21 +123,21 @@ export default function HeroSection() {
 
           {/* Right — Portrait placeholder & Focus areas */}
           <div className="lg:col-span-2 space-y-6 animate-fade-in-up animation-delay-300">
-            {/* Portrait placeholder */}
+            {/* Portrait display */}
             <div className="relative mx-auto w-48 h-48 lg:w-56 lg:h-56">
-              <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[var(--color-bg-card)] to-[var(--color-bg-secondary)] border border-[var(--color-border)] flex items-center justify-center overflow-hidden">
-                <div className="text-center">
-                  <div className="text-5xl lg:text-6xl font-bold gradient-text">
-                    {personalInfo.initials}
-                  </div>
-                  <p className="text-xs text-[var(--color-text-muted)] mt-2">
-                    Photo coming soon
-                  </p>
-                </div>
+              <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[var(--color-bg-card)] to-[var(--color-bg-secondary)] border-2 border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all flex items-center justify-center overflow-hidden shadow-xl shadow-[var(--color-accent)]/10 group">
+                <Image
+                  src={personalInfo.photoPath}
+                  alt={personalInfo.name}
+                  width={224}
+                  height={224}
+                  priority
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               {/* Decorative corner accent */}
-              <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-[var(--color-accent)] rounded-tr-lg opacity-60" aria-hidden="true" />
-              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-[var(--color-cyan)] rounded-bl-lg opacity-60" aria-hidden="true" />
+              <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-[var(--color-accent)] rounded-tr-lg opacity-80" aria-hidden="true" />
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-[var(--color-cyan)] rounded-bl-lg opacity-80" aria-hidden="true" />
             </div>
 
             {/* Focus areas */}

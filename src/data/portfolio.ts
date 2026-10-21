@@ -17,6 +17,7 @@ export const personalInfo = {
   degree: "B.Tech in Computer Engineering",
   studyPeriod: "Sep 2024 – Present",
   resumePath: "/Ashwin_Satvi_CV.pdf",
+  photoPath: "/ashwin-satvi.jpg",
   about: [
     "I'm a Computer Engineering student at VJTI Mumbai with a strong interest in building practical, well-engineered software systems.",
     "My work spans full-stack web development, cloud-native DevOps platforms, and real-time computer vision applications. I enjoy the process of taking an idea from design through implementation to deployment.",
