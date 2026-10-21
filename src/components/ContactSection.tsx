@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Mail, Github, Send, MapPin, Copy, Check, ExternalLink } from "lucide-react";
+import { Mail, Phone, Github, Send, MapPin, Copy, Check, ExternalLink } from "lucide-react";
 import { personalInfo } from "@/data/portfolio";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
+  const [phoneCopied, setPhoneCopied] = useState(false);
 
   const copyEmail = useCallback(async () => {
     try {
@@ -22,6 +23,23 @@ export default function ContactSection() {
       document.body.removeChild(textArea);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+    }
+  }, []);
+
+  const copyPhone = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(personalInfo.phone);
+      setPhoneCopied(true);
+      setTimeout(() => setPhoneCopied(false), 2000);
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = personalInfo.phone;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      setPhoneCopied(true);
+      setTimeout(() => setPhoneCopied(false), 2000);
     }
   }, []);
 
@@ -88,6 +106,57 @@ export default function ContactSection() {
                   aria-label={copied ? "Email copied" : "Copy email address"}
                 >
                   {copied ? (
+                    <>
+                      <Check size={14} aria-hidden="true" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={14} aria-hidden="true" />
+                      Copy
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Phone card */}
+            <div className="glass-card p-5">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 rounded-lg bg-[rgba(34,211,238,0.15)]">
+                  <Phone
+                    size={18}
+                    className="text-[var(--color-cyan)]"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div>
+                  <p className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">
+                    Phone / WhatsApp
+                  </p>
+                  <a
+                    href={`tel:${personalInfo.phoneRaw}`}
+                    className="text-sm text-[var(--color-text-primary)] hover:text-[var(--color-cyan)] transition-colors"
+                  >
+                    {personalInfo.phone}
+                  </a>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <a
+                  href={`tel:${personalInfo.phoneRaw}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-[var(--color-cyan)] text-[#0a0e1a] font-medium hover:bg-[#67e8f9] transition-colors"
+                  aria-label={`Call ${personalInfo.phone}`}
+                >
+                  <Phone size={14} aria-hidden="true" />
+                  Call
+                </a>
+                <button
+                  onClick={copyPhone}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-cyan)] hover:text-[var(--color-cyan)] transition-all"
+                  aria-label={phoneCopied ? "Phone number copied" : "Copy phone number"}
+                >
+                  {phoneCopied ? (
                     <>
                       <Check size={14} aria-hidden="true" />
                       Copied!

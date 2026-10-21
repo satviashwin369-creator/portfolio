@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Github, Mail, ArrowUp } from "lucide-react";
+import { Github, Mail, Phone, ArrowUp } from "lucide-react";
 import { personalInfo, navItems } from "@/data/portfolio";
 
 export default function Footer() {
@@ -84,6 +84,14 @@ export default function Footer() {
               >
                 <Mail size={14} aria-hidden="true" />
                 {personalInfo.email}
+              </a>
+              <a
+                href={`tel:${personalInfo.phoneRaw}`}
+                className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-cyan)] transition-colors"
+                aria-label={`Phone: ${personalInfo.phone}`}
+              >
+                <Phone size={14} aria-hidden="true" />
+                {personalInfo.phone}
               </a>
             </div>
           </div>

@@ -8,6 +8,8 @@ export const personalInfo = {
   initials: "AS",
   location: "Mumbai, India",
   email: "satviashwin369@gmail.com",
+  phone: "+91 9146187426",
+  phoneRaw: "+919146187426",
   github: "https://github.com/satviashwin369-creator",
   githubUsername: "satviashwin369-creator",
   headline: "Computer Engineering Student",
